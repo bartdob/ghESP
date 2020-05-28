@@ -1,0 +1,721 @@
+
+<!DOCTYPE html>
+<html lang="pl">
+<style>
+	body{ 
+		margin: 0 auto;
+		font-family: 'Capriola', sans-serif;
+		background: rgba(44,44,44,1);
+		background: -moz-linear-gradient(left, rgba(44,44,44,1) 0%, rgba(0,0,0,1) 0%, rgba(71,71,71,1) 39%, rgba(43,43,43,1) 64%, rgba(28,28,28,1) 91%, rgba(19,19,19,1) 100%);
+		background: -webkit-gradient(left top, right top, color-stop(0%, rgba(44,44,44,1)), color-stop(0%, rgba(0,0,0,1)), color-stop(39%, rgba(71,71,71,1)), color-stop(64%, rgba(43,43,43,1)), color-stop(91%, rgba(28,28,28,1)), color-stop(100%, rgba(19,19,19,1)));
+		background: -webkit-linear-gradient(left, rgba(44,44,44,1) 0%, rgba(0,0,0,1) 0%, rgba(71,71,71,1) 39%, rgba(43,43,43,1) 64%, rgba(28,28,28,1) 91%, rgba(19,19,19,1) 100%);
+		background: -o-linear-gradient(left, rgba(44,44,44,1) 0%, rgba(0,0,0,1) 0%, rgba(71,71,71,1) 39%, rgba(43,43,43,1) 64%, rgba(28,28,28,1) 91%, rgba(19,19,19,1) 100%);
+		background: -ms-linear-gradient(left, rgba(44,44,44,1) 0%, rgba(0,0,0,1) 0%, rgba(71,71,71,1) 39%, rgba(43,43,43,1) 64%, rgba(28,28,28,1) 91%, rgba(19,19,19,1) 100%);
+		background: linear-gradient(to right, rgba(44,44,44,1) 0%, rgba(0,0,0,1) 0%, rgba(71,71,71,1) 39%, rgba(43,43,43,1) 64%, rgba(28,28,28,1) 91%, rgba(19,19,19,1) 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2c2c2c', endColorstr='#131313', GradientType=1 );
+	}
+	.container{
+		max-width: 1400px;
+	    margin-left: auto;
+	    margin-right: auto;
+	    background:black;
+	}
+	.back{
+		width: 50%;
+		float: left;
+		text-align: center;
+	}
+	.okno{
+		width: 70%;
+		height: 450px;
+		font-size: 16px;
+		color: black;
+		//background-color:#DC143C; 
+		background-color: #2E8B57;	
+		border-radius: 15px;
+		display: inline-block;
+		margin: 40px 10px 15px 10px;	
+	}
+	.okno-okno{
+		width: 100%;
+		//background-color:green ;
+		margin-top: 15px;
+	}
+	.okno-okno input[type=text]{
+		width:100px;
+		background-color: #efefef;
+		color: #666;
+		border: 2px solid #ddd;
+		border-radius: 5px;
+		font-size: 12px;
+		padding: 8px;
+		box-sizing: border-box;
+		outline:none;
+	}
+	.okno-okno input[type=text]:hover{
+		background-color:  #e6e6e6;
+
+	}
+	.okno-okno input[type=submit]{
+		background-color: #32CD32;
+		width:80px;
+		color: white;
+		font-size: 12px;
+		border:none;
+		border-radius: 5px;
+		padding: 10px 6px;
+		margin-top:10px;
+		cursor: pointer;
+		letter-spacing: 2px;
+		outline: none;
+	}
+	.okno-okno input[type=submit]:hover{
+		background-color: #37b93d;
+	}
+	.tryb-all{
+		width: 100%;
+		height: 50px;
+		//background-color: white;
+		margin-bottom: 2px;
+	}
+	.tryby{
+		height: 40px;
+		width:60%;
+		text-align: center;
+		//background-color: grey;
+		float:left;
+		//margin-bottom: 20px;
+		
+	}
+	.switch{
+		height: 40px;
+		width:40%;
+		text-align: center;
+		//background-color: pink;
+		float:left;
+		margin-bottom: 20px;
+		
+	}
+
+	.onoffswitch {
+    position: relative; 
+    width: 85px;
+    -webkit-user-select:none; 
+    -moz-user-select:none; 
+    -ms-user-select: none;
+    margin: 0 auto;
+    margin-top: 15px;
+    //background-color: yellow;
+	}
+	.onoffswitch-checkbox {
+	    display: none;
+	}
+	.onoffswitch-label {
+	    display: block; 
+	    overflow: hidden; 
+	    cursor: pointer;
+	    border: 2px solid #999999; 
+	    border-radius: 13px;
+	}
+	.onoffswitch-inner {
+	    display: block; 
+	    width: 200%; 
+	    margin-left: -100%;
+	    transition: margin 0.3s ease-in 0s;
+	}
+	.onoffswitch-inner:before, .onoffswitch-inner:after {
+	    display: block; 
+	    float: left; 
+	    width: 50%; height: 22px; padding: 0; line-height: 22px;
+	    font-size: 12px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+	    box-sizing: border-box;
+	}
+	.onoffswitch-inner:before {
+	    content: "AUTO";
+	    padding-left: 0px;
+	    background-color: #2AC425; color: #FAF5F5;
+	}
+	.onoffswitch-inner:after {
+	    content: "MANU";
+	    padding-right: 14px;
+	    background-color: #EEEEEE; color: #999999;
+	    text-align: right;
+	}
+	.onoffswitch-switch {
+	    display: block; width: 16px; margin: 3px;
+	    background: #FFFFFF;
+	    position: absolute; top: 0; bottom: 0;
+	    right: 59px;
+	    border: 2px solid #999999; border-radius: 13px;
+	    transition: all 0.3s ease-in 0s; 
+	}
+	.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+	    margin-left: 0;
+	}
+	.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+	    right: 0px; 
+	}
+	
+	// ON/OFF  STAN POMPY
+
+	.onoffswitch-2 {
+    	position: relative; 
+    	width: 85px;
+    	-webkit-user-select:none; 
+    	-moz-user-select:none; 
+    	-ms-user-select: none;
+	}
+	.onoffswitch-2-checkbox {
+	    display: none;
+	}
+	.onoffswitch-2-label {
+	    display: block; 
+	    overflow: hidden; 
+	    cursor: pointer;
+	    border: 2px solid #999999; 
+	    border-radius: 13px;
+	}
+	.onoffswitch-2-inner {
+	    display: block; width: 200%; margin-left: -100%;
+	    transition: margin 0.3s ease-in 0s;
+	}
+	.onoffswitch-2-inner:before, .onoffswitch-2-inner:after {
+	    display: block; float: left; width: 50%; height: 22px; padding: 0; line-height: 22px;
+	    font-size: 12px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+	    box-sizing: border-box;
+	}
+	.onoffswitch-2-inner:before {
+	    content: "ON";
+	    padding-left: 10px;
+	    background-color: #2AC425; color: #FAF5F5;
+	}
+	.onoffswitch-2-inner:after {
+	    content: "OFF";
+	    padding-right: 10px;
+	    background-color: #EEEEEE; color: #999999;
+	    text-align: right;
+	}
+	.onoffswitch-2-switch {
+	    display: block; width: 16px; margin: 3px;
+	    background: #FFFFFF;
+	    position: absolute; top: 0; bottom: 0;
+	    right: 59px;
+	    border: 2px solid #999999; border-radius: 13px;
+	    transition: all 0.3s ease-in 0s; 
+	}
+	.onoffswitch-2-checkbox:checked + .onoffswitch-2-label .onoffswitch-2-inner {
+	    margin-left: 0;
+	}
+	.onoffswitch-2-checkbox:checked + .onoffswitch-2-label .onoffswitch-2-switch {
+	    right: 0px; 
+	}
+
+		// AUTO/MANU TRYB  GRZALKI
+
+	.onoffswitch-3 {
+	    position: relative; 
+	    width: 85px;
+	    -webkit-user-select:none; 
+	    -moz-user-select:none; 
+	    -ms-user-select: none;
+	    margin: 0 auto;
+	    margin-top: 15px;
+	    //background-color: yellow;
+		}
+	.onoffswitch-3-checkbox {
+	    display: none;
+	}
+	.onoffswitch-3-label {
+	    display: block; 
+	    overflow: hidden; 
+	    cursor: pointer;
+	    border: 2px solid #999999; 
+	    border-radius: 13px;
+	}
+	.onoffswitch-3-inner {
+	    display: block; 
+	    width: 200%; 
+	    margin-left: -100%;
+	    transition: margin 0.3s ease-in 0s;
+	}
+	.onoffswitch-3-inner:before, .onoffswitch-3-inner:after {
+	    display: block; 
+	    float: left; 
+	    width: 50%; height: 22px; padding: 0; line-height: 22px;
+	    font-size: 12px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+	    box-sizing: border-box;
+	}
+	.onoffswitch-3-inner:before {
+	    content: "AUTO";
+	    padding-left: 0px;
+	    background-color: #2AC425; color: #FAF5F5;
+	}
+	.onoffswitch-3-inner:after {
+	    content: "MANU";
+	    padding-right: 14px;
+	    background-color: #EEEEEE; color: #999999;
+	    text-align: right;
+	}
+	.onoffswitch-3-switch {
+	    display: block; width: 16px; margin: 3px;
+	    background: #FFFFFF;
+	    position: absolute; top: 0; bottom: 0;
+	    right: 59px;
+	    border: 2px solid #999999; border-radius: 13px;
+	    transition: all 0.3s ease-in 0s; 
+	}
+	.onoffswitch-3-checkbox:checked + .onoffswitch-3-label .onoffswitch-3-inner {
+	    margin-left: 0;
+	}
+	.onoffswitch-3-checkbox:checked + .onoffswitch-3-label .onoffswitch-3-switch {
+	    right: 0px; 
+	}
+
+	// ON/OFF STAN GRZAŁKI
+
+	.onoffswitch-4 {
+    position: relative; width: 85px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+	}
+	.onoffswitch-4-checkbox {
+	    display: none;
+	}
+	.onoffswitch-4-label {
+	    display: block; overflow: hidden; cursor: pointer;
+	    border: 2px solid #999999; border-radius: 13px;
+	}
+	.onoffswitch-4-inner {
+	    display: block; width: 200%; margin-left: -100%;
+	    transition: margin 0.3s ease-in 0s;
+	}
+	.onoffswitch-4-inner:before, .onoffswitch-4-inner:after {
+	    display: block; float: left; width: 50%; height: 22px; padding: 0; line-height: 22px;
+	    font-size: 12px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+	    box-sizing: border-box;
+	}
+	.onoffswitch-4-inner:before {
+	    content: "ON";
+	    padding-left: 10px;
+	    background-color: #2AC425; color: #FAF5F5;
+	}
+	.onoffswitch-4-inner:after {
+	    content: "OFF";
+	    padding-right: 10px;
+	    background-color: #EEEEEE; color: #999999;
+	    text-align: right;
+	}
+	.onoffswitch-4-switch {
+	    display: block; width: 16px; margin: 3px;
+	    background: #FFFFFF;
+	    position: absolute; top: 0; bottom: 0;
+	    right: 59px;
+	    border: 2px solid #999999; border-radius: 13px;
+	    transition: all 0.3s ease-in 0s; 
+	}
+	.onoffswitch-4-checkbox:checked + .onoffswitch-4-label .onoffswitch-4-inner {
+	    margin-left: 0;
+	}
+	.onoffswitch-4-checkbox:checked + .onoffswitch-4-label .onoffswitch-4-switch {
+	    right: 0px; 
+	}
+
+	// AUTO/MANU TRYB  OŚWIETLENIA
+
+	.onoffswitch-5 {
+	    position: relative; 
+	    width: 85px;
+	    -webkit-user-select:none; 
+	    -moz-user-select:none; 
+	    -ms-user-select: none;
+	    margin: 0 auto;
+	    margin-top: 15px;
+	    //background-color: yellow;
+	}
+	.onoffswitch-5-checkbox {
+	    display: none;
+	}
+	.onoffswitch-5-label {
+	    display: block; 
+	    overflow: hidden; 
+	    cursor: pointer;
+	    border: 2px solid #999999; 
+	    border-radius: 13px;
+	}
+	.onoffswitch-5-inner {
+	    display: block; 
+	    width: 200%; 
+	    margin-left: -100%;
+	    transition: margin 0.3s ease-in 0s;
+	}
+	.onoffswitch-5-inner:before, .onoffswitch-5-inner:after {
+	    display: block; 
+	    float: left; 
+	    width: 50%; height: 22px; padding: 0; line-height: 22px;
+	    font-size: 12px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+	    box-sizing: border-box;
+	}
+	.onoffswitch-5-inner:before {
+	    content: "AUTO";
+	    padding-left: 0px;
+	    background-color: #2AC425; color: #FAF5F5;
+	}
+	.onoffswitch-5-inner:after {
+	    content: "MANU";
+	    padding-right: 14px;
+	    background-color: #EEEEEE; color: #999999;
+	    text-align: right;
+	}
+	.onoffswitch-5-switch {
+	    display: block; width: 16px; margin: 3px;
+	    background: #FFFFFF;
+	    position: absolute; top: 0; bottom: 0;
+	    right: 59px;
+	    border: 2px solid #999999; border-radius: 13px;
+	    transition: all 0.3s ease-in 0s; 
+	}
+	.onoffswitch-5-checkbox:checked + .onoffswitch-5-label .onoffswitch-5-inner {
+	    margin-left: 0;
+	}
+	.onoffswitch-5-checkbox:checked + .onoffswitch-5-label .onoffswitch-5-switch {
+	    right: 0px; 
+	}
+
+	// ON/OFF STAN OŚWIETLENIA
+
+	.onoffswitch-6 {
+    position: relative; width: 85px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+	}
+	.onoffswitch-6-checkbox {
+	    display: none;
+	}
+	.onoffswitch-6-label {
+	    display: block; overflow: hidden; cursor: pointer;
+	    border: 2px solid #999999; border-radius: 13px;
+	}
+	.onoffswitch-6-inner {
+	    display: block; width: 200%; margin-left: -100%;
+	    transition: margin 0.3s ease-in 0s;
+	}
+	.onoffswitch-6-inner:before, .onoffswitch-6-inner:after {
+	    display: block; float: left; width: 50%; height: 22px; padding: 0; line-height: 22px;
+	    font-size: 12px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+	    box-sizing: border-box;
+	}
+	.onoffswitch-6-inner:before {
+	    content: "ON";
+	    padding-left: 10px;
+	    background-color: #2AC425; color: #FAF5F5;
+	}
+	.onoffswitch-6-inner:after {
+	    content: "OFF";
+	    padding-right: 10px;
+	    background-color: #EEEEEE; color: #999999;
+	    text-align: right;
+	}
+	.onoffswitch-6-switch {
+	    display: block; width: 16px; margin: 3px;
+	    background: #FFFFFF;
+	    position: absolute; top: 0; bottom: 0;
+	    right: 59px;
+	    border: 2px solid #999999; border-radius: 13px;
+	    transition: all 0.3s ease-in 0s; 
+	}
+	.onoffswitch-6-checkbox:checked + .onoffswitch-6-label .onoffswitch-6-inner {
+	    margin-left: 0;
+	}
+	.onoffswitch-6-checkbox:checked + .onoffswitch-6-label .onoffswitch-6-switch {
+	    right: 0px; 
+	}
+	@media screen and (max-width: 1116px) {
+
+	}
+	@media screen and (max-width: 984px) {
+		.tryb-all{
+			width: 100%;
+			height: 50px;
+			//background-color: white;
+			//margin-bottom: 50px;
+		}
+		.tryby{
+			height: 100%;
+			width:70%;
+			text-align: center;
+			//background-color: grey;
+			float:left;
+			margin-bottom: 20px;		
+		}
+		.switch{
+			height: 100%;
+			width:30%;
+			text-align: center;
+			//background-color: pink;
+			float:left;
+			margin-bottom: 20px;		
+		}
+		#tryb{
+			//background-color: blue;
+			//margin-top: 23%;
+		}
+		.okno{
+			height: 500px;
+		}
+	}
+	@media screen and (max-width: 810px) {
+		.tryb-all{
+			width: 100%;
+			height: 30px;
+			//background-color: white;
+		}
+		.tryby{
+			height: 17px;
+			width:100%;
+			text-align: center;
+			//background-color: grey;
+			float:left;
+		}
+		.switch{
+			height: 17px;
+			width:100%;
+			text-align: center;
+			//background-color: pink;
+			float:left;
+		}
+		.okno{
+			height: 550px;
+		}
+	}
+
+	@media screen and (max-width: 620px) {
+		.container{
+			width: 100%;
+		    margin-left: auto;
+		    margin-right: auto;
+		    background-color:black;
+		    text-align: center;
+		}
+		.back{
+			width: 100%;
+			//background-color: yellow;
+			float: left;
+			margin: auto;
+			text-align: center;
+		}
+		.okno{
+			width: 85%;
+			margin: 20px 10px 5px 10px;
+		}
+		.tryb-all{
+			width: 100%;
+			height: 50px;
+			//background-color: white;
+			//margin-bottom: 50px;
+		}
+		.tryby{
+			height: 100%;
+			width:75%;
+			text-align: center;
+			//background-color: grey;
+			float:left;
+			margin-bottom: 20px;		
+		}
+		.switch{
+			height: 20px;
+			width:25%;
+			text-align: center;
+			//background-color: pink;
+			float:left;
+			margin-bottom: 20px;			
+		}
+	}
+	@media screen and (max-width: 410px) {
+		.tryb-all{
+			width: 100%;
+			height: 30px;
+			//background-color: white;
+		}
+		.tryby{
+			height: 17px;
+			width:100%;
+			text-align: center;
+			//background-color: grey;
+			float:left;
+		}
+		.switch{
+			height: 17px;
+			width:100%;
+			text-align: center;
+			//background-color: pink;
+			float:left;	
+		}
+		.okno{
+			height: 550px;
+		}
+	}
+</style>
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" type="text/css" href="styl.css">
+	<link href='http://fonts.googleapis.com/css?family=Capriola&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+</head>
+
+<body>			
+	<div class="container">
+		<main>
+			<div class="back">
+				<div class="okno">
+					<div class="okno-okno">
+						<h2>Czujnik temperatury</h2>
+						<p>Aktualna temperatura: 23 °C</p>
+						<p>Zadana temperatura: 23 °C </p>
+						<p>Zakres temperatury: 2 °C </p>
+						<br/><br/>
+						<form method="get">
+							Zmiana temperatury: <br/>
+							<input type="text" name="zmiana_temp" placeholder="Podaj liczbę" required />
+							<input type="submit" value="Ustaw"/>
+							<br/><br/><br/>
+							Zmiana zakresu temperatury: <br/>
+							<input type="text" name="zmiana_zakresu" placeholder="Podaj liczbę" required />
+							<input type="submit" value="Ustaw"/>
+						</form>
+					</div>						
+				</div>
+			</div>
+			<div class="back">
+				<div class="okno">
+					<div class="okno-okno">
+						<h2>Czujnik wilgotności gleby</h2>
+						<p>Aktualna wilgotność: 70%</p>
+						<p>Zadany zakres wilgotności: 20% - 70% </p>
+						<br/><br/>
+						<form method="get">
+							Zmiana dolnego progu wilgotności: <br/>
+							<input type="text" name="prog_dolny" placeholder="Podaj liczbę" required />
+							<input type="submit" value="Ustaw"/>
+							<br/><br/><br/>
+							Zmiana górnego progu wilgotności: <br/>
+							<input type="text" name="prog_gorny" placeholder="Podaj liczbę" required />
+							<input type="submit" value="Ustaw"/>
+						</form>
+					</div>						
+				</div>
+			</div>
+			<div class="back">
+				<div class="okno">
+					<div class="okno-okno">
+						<h2>Czujnik natężenia światła</h2>
+						<p>Aktualne natężenie: 600 lx</p>
+						<br><h2>Czujnik poziomu wody</h2>
+						<p>Poziom wody: ok / niski<p>
+						<br><h2>Ilość cykli</h2>
+						<p>Cykle pompy wody: </p>
+						<p>Cykle grzałki: </p>
+						<p>Cykle oświetlenia: </p> 
+
+					</div>						
+				</div>
+			</div>
+			<div class="back">
+				<div class="okno">
+					<div class="okno-okno">
+						<h2>Stany urządzeń</h2>
+						
+						<div class="tryb-all">
+							<div class="tryby">
+								<p id="tryb">Tryb pompy wody</p>
+							</div>
+									<div class="switch">
+										<div class="onoffswitch">
+										    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+										    <label class="onoffswitch-label" for="myonoffswitch">
+										        <span class="onoffswitch-inner"></span>
+										        <span class="onoffswitch-switch"></span>
+										    </label>
+										</div>
+									</div>
+						</div>
+
+						<div class="tryb-all">		
+							<div class="tryby">
+								<p id="tryb">Stan pompy wody</p>
+							</div>
+							<div class="switch">
+										<div class="onoffswitch">
+										    <input type="checkbox" name="onoffswitch" class="onoffswitch-2-checkbox" id="myonoffswitch-2">
+										    <label class="onoffswitch-2-label" for="myonoffswitch-2">
+										        <span class="onoffswitch-2-inner"></span>
+										        <span class="onoffswitch-2-switch"></span>
+										    </label>
+										</div>
+							</div>
+						</div>
+						<div class="tryb-all">
+							<div class="tryby">
+								<p id="tryb">Tryb grzałki</p>
+							</div>
+								<div class="switch">
+									<div class="onoffswitch">
+										<input type="checkbox" name="onoffswitch-3" class="onoffswitch-3-checkbox" id="myonoffswitch-3" checked>
+										<label class="onoffswitch-3-label" for="myonoffswitch-3">
+										    <span class="onoffswitch-3-inner"></span>
+										    <span class="onoffswitch-3-switch"></span>
+										</label>
+									</div>
+								</div>
+						</div>
+						<div class="tryb-all">
+							<div class="tryby">
+								<p id="tryb">Stan grzałki</p>
+							</div>
+							<div class="switch">
+								<div class="onoffswitch">
+									<input type="checkbox" name="onoffswitch-4" class="onoffswitch-4-checkbox" id="myonoffswitch-4">
+										<label class="onoffswitch-4-label" for="myonoffswitch-4">
+										    <span class="onoffswitch-4-inner"></span>
+										    <span class="onoffswitch-4-switch"></span>
+										</label>
+								</div>
+							</div>
+						</div>
+						
+						<div class="tryb-all">
+							<div class="tryby">
+								<p id="tryb">Tryb oświetlenia</p>
+							</div>
+								<div class="switch">
+									<div class="onoffswitch">
+										<input type="checkbox" name="onoffswitch-5" class="onoffswitch-5-checkbox" id="myonoffswitch-5" checked>
+										    <label class="onoffswitch-5-label" for="myonoffswitch-5">
+										        <span class="onoffswitch-5-inner"></span>
+										        <span class="onoffswitch-5-switch"></span>
+										    </label>
+									</div>
+								</div>
+						</div>
+						<div class="tryb-all">
+							<div class="tryby">
+								<p id="tryb">Stan oświetlenia</p>
+							</div>
+							<div class="switch">
+								<div class="onoffswitch">
+									<input type="checkbox" name="onoffswitch-6" class="onoffswitch-6-checkbox" id="myonoffswitch-6">
+										<label class="onoffswitch-6-label" for="myonoffswitch-6">
+										    <span class="onoffswitch-6-inner"></span>
+										    <span class="onoffswitch-6-switch"></span>
+										</label>
+								</div>
+							</div>
+						</div>
+					</div>						
+				</div>
+			</div>
+		</main>
+	</div>
+	<script type="text/javascript">
+		
+	</script>
+</body>
+</html>
