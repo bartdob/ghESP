@@ -1,0 +1,74 @@
+<script>
+
+// deklaracja zmiennych po id
+
+var pumpSwitch = document.getElementById("myonoffswitch").value;
+var pumpState = document.getElementById("myonoffswitch-2").value;
+
+var heatSwitch = document.getElementById("myonoffswitch-3").value;
+var heatState = document.getElementById("myonoffswitch-4").value;
+
+var lightSwitch = document.getElementById("myonoffswitch-5").value;
+var lightState = document.getElementById("myonoffswitch-6").value;
+
+
+//  pumpSwitch
+
+
+   function pumpSwitchOnOff() 
+  {
+       pumpSwitch_text = pumpSwitch.value;
+     if (pumpSwitch_text=="Auto")
+     {
+       ajaxLoad('pumpSwitchAuto'); 
+     }
+     else
+     {
+       ajaxLoad('pumpSwitchManu');
+       pumpSwitch_text = "Manu";
+     }
+  }
+
+  function pumpStateOnOff() 
+  {
+       pumpState_text = pumpState.value;
+     if (pumpSwitch_text=="ON")
+     {
+       ajaxLoad('pumpSwitchON'); 
+     }
+     else
+     {
+       ajaxLoad('pumpSwitchOff');
+       pumpSwitch_text = "Off";
+     }
+  }
+
+  
+
+
+
+
+
+
+var ajaxRequest = null;
+if (window.XMLHttpRequest)  { ajaxRequest =new XMLHttpRequest(); }
+else                        { ajaxRequest =new ActiveXObject("Microsoft.XMLHTTP"); }
+ 
+
+
+function ajaxLoad(ajaxURL)
+{
+  if(!ajaxRequest){ alert("AJAX is not supported."); return; }
+ 
+  ajaxRequest.open("GET",ajaxURL,true);
+  ajaxRequest.onreadystatechange = function()
+  {
+    if(ajaxRequest.readyState == 4 && ajaxRequest.status==200)
+    {
+      var ajaxResult = ajaxRequest.responseText;
+    }
+  }
+  ajaxRequest.send();
+}
+ 
+</script>
