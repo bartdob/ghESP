@@ -1,15 +1,13 @@
-<script>
-
 // deklaracja zmiennych po id
 
-var pumpSwitch = document.getElementById("myonoffswitch").value;
-var pumpState = document.getElementById("myonoffswitch-2").value;
+var pumpSwitch = document.getElementById("myonoffswitch");
+var pumpState = document.getElementById("myonoffswitch-2");
 
-var heatSwitch = document.getElementById("myonoffswitch-3").value;
-var heatState = document.getElementById("myonoffswitch-4").value;
+var heatSwitch = document.getElementById("myonoffswitch-3");
+var heatState = document.getElementById("myonoffswitch-4");
 
-var lightSwitch = document.getElementById("myonoffswitch-5").value;
-var lightState = document.getElementById("myonoffswitch-6").value;
+var lightSwitch = document.getElementById("myonoffswitch-5");
+var lightState = document.getElementById("myonoffswitch-6");
 
 
 //  pumpSwitch ---------------------------------------
@@ -125,5 +123,3 @@ function ajaxLoad(ajaxURL)
   }
   ajaxRequest.send();
 }
- 
-</script>

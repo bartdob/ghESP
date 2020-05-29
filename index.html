@@ -6,6 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<link rel="icon" href="data:,">
 	<link href='http://fonts.googleapis.com/css?family=Capriola&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+	<script type="text/javascript" src="funcOnOff.js"></script>
 </head>
 
 <body>			
@@ -75,7 +76,7 @@
 								<p id="tryb">Tryb pompy wody</p>
 							</div>
 									<div class="switch">
-										<div class="onoffswitch">
+										<div class="onoffswitch" onClick="pumpSwitchOnOff()">
 										    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
 										    <label class="onoffswitch-label" for="myonoffswitch">
 										        <span class="onoffswitch-inner"></span>
@@ -90,7 +91,7 @@
 								<p id="tryb">Stan pompy wody</p>
 							</div>
 							<div class="switch">
-										<div class="onoffswitch">
+										<div class="onoffswitch" onClick="pumpStateOnOff()">
 										    <input type="checkbox" name="onoffswitch" class="onoffswitch-2-checkbox" id="myonoffswitch-2">
 										    <label class="onoffswitch-2-label" for="myonoffswitch-2">
 										        <span class="onoffswitch-2-inner"></span>
@@ -104,7 +105,7 @@
 								<p id="tryb">Tryb grzałki</p>
 							</div>
 								<div class="switch">
-									<div class="onoffswitch">
+									<div class="onoffswitch" onClick="heatSwitchOnOff()">
 										<input type="checkbox" name="onoffswitch-3" class="onoffswitch-3-checkbox" id="myonoffswitch-3" checked>
 										<label class="onoffswitch-3-label" for="myonoffswitch-3">
 										    <span class="onoffswitch-3-inner"></span>
@@ -118,7 +119,7 @@
 								<p id="tryb">Stan grzałki</p>
 							</div>
 							<div class="switch">
-								<div class="onoffswitch">
+								<div class="onoffswitch" onClick="heatStateOnOff()">
 									<input type="checkbox" name="onoffswitch-4" class="onoffswitch-4-checkbox" id="myonoffswitch-4">
 										<label class="onoffswitch-4-label" for="myonoffswitch-4">
 										    <span class="onoffswitch-4-inner"></span>
@@ -133,7 +134,7 @@
 								<p id="tryb">Tryb oświetlenia</p>
 							</div>
 								<div class="switch">
-									<div class="onoffswitch">
+									<div class="onoffswitch" onClick="lightSwitchOnOff()">
 										<input type="checkbox" name="onoffswitch-5" class="onoffswitch-5-checkbox" id="myonoffswitch-5" checked>
 										    <label class="onoffswitch-5-label" for="myonoffswitch-5">
 										        <span class="onoffswitch-5-inner"></span>
@@ -147,7 +148,7 @@
 								<p id="tryb">Stan oświetlenia</p>
 							</div>
 							<div class="switch">
-								<div class="onoffswitch">
+								<div class="onoffswitch" onClick="lightStateOnOff()">
 									<input type="checkbox" name="onoffswitch-6" class="onoffswitch-6-checkbox" id="myonoffswitch-6">
 										<label class="onoffswitch-6-label" for="myonoffswitch-6">
 										    <span class="onoffswitch-6-inner"></span>
@@ -161,8 +162,5 @@
 			</div>
 		</main>
 	</div>
-	<script type="text/javascript">
-		
-	</script>
 </body>
 </html>
