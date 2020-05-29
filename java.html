@@ -12,20 +12,20 @@ var lightSwitch = document.getElementById("myonoffswitch-5").value;
 var lightState = document.getElementById("myonoffswitch-6").value;
 
 
-//  pumpSwitch
+//  pumpSwitch ---------------------------------------
 
 
    function pumpSwitchOnOff() 
   {
        pumpSwitch_text = pumpSwitch.value;
-     if (pumpSwitch_text=="Auto")
+     if (pumpSwitch_text=="AUTO")
      {
        ajaxLoad('pumpSwitchAuto'); 
      }
      else
      {
        ajaxLoad('pumpSwitchManu');
-       pumpSwitch_text = "Manu";
+       pumpSwitch_text = "MANU";
      }
   }
 
@@ -39,14 +39,69 @@ var lightState = document.getElementById("myonoffswitch-6").value;
      else
      {
        ajaxLoad('pumpSwitchOff');
-       pumpSwitch_text = "Off";
+       pumpSwitch_text = "OFF";
      }
   }
 
-  
+  // heatSwitch --------------------------------------
 
+  function heatSwitchOnOff() 
+  {
+       heatSwitch_text = heatSwitch.value;
+     if (heatSwitch_text=="Auto")
+     {
+       ajaxLoad('heatSwitchAuto'); 
+     }
+     else
+     {
+       ajaxLoad('heatSwitchManu');
+       pumpSwitch_text = "MANU";
+     }
+  }
 
+  function heatStateOnOff() 
+  {
+       heatState_text = heatState.value;
+     if (heatSwitch_text=="ON")
+     {
+       ajaxLoad('heatSwitchON'); 
+     }
+     else
+     {
+       ajaxLoad('heatSwitchOff');
+       pumpSwitch_text = "OFF";
+     }
+  }
 
+  //  light ----------------------------------
+
+  function lightSwitchOnOff() 
+  {
+    lightSwitch_text = lightSwitch.value;
+     if (lightSwitch_text=="Auto")
+     {
+       ajaxLoad('lightSwitchAuto'); 
+     }
+     else
+     {
+       ajaxLoad('lightSwitchManu');
+       pumpSwitch_text = "MANU";
+     }
+  }
+
+  function lightStateOnOff() 
+  {
+       lightState_text = lightState.value;
+     if (lightSwitch_text=="ON")
+     {
+       ajaxLoad('lightSwitchON'); 
+     }
+     else
+     {
+       ajaxLoad('lightSwitchOff');
+       pumpSwitch_text = "OFF";
+     }
+  }
 
 
 
